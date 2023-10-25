@@ -4,7 +4,7 @@ const PORT = 3000;
 const lista = require("./lista.json");
 
 app.get("/", (req, res) => {
-  res.send("Hola");
+  res.send("Bienvenido");
 });
 
 app.get("/lista", (req, res) => {
