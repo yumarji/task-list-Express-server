@@ -1,7 +1,20 @@
 [
   {
-    "id": "123456",
-    "isCompleted": false,
-    "description": "Walk the dog"
+    "id": "1",
+    "task": "task 1",
+    "description": "Go to the gym",
+    "isCompleted": true
+  },
+  {
+    "id": "2",
+    "task": "task 2",
+    "description": "Study for a test",
+    "isCompleted": false
+  },
+  {
+    "id": "3",
+    "task": "task 3",
+    "description": "Buy some fruits",
+    "isCompleted": true
   }
 ]
