@@ -2,14 +2,25 @@ const express = require("express");
 const listEditRouter = express.Router();
 const fs = require("fs");
 const path = require("path");
+const validPost = require("../middlewares/validPost");
+const validPut = require("../middlewares/validPut");
+const validId = require("../middlewares/validId");
 const taskList = path.join(__dirname, "../lista.json");
 const data = fs.readFileSync(taskList, "utf8");
 const list = JSON.parse(data);
+const { v4: uuidv4 } = require("uuid");
 
 //Ruta para agregar tareas
-listEditRouter.post("/add", (req, res) => {
+listEditRouter.post("/add", validPost, (req, res) => {
   try {
-    const newTask = req.body;
+    const { task, description, isCompleted } = req.body;
+    const newTask = {
+      id: uuidv4(),
+      task,
+      description,
+      isCompleted,
+    };
+
     list.push(newTask);
     fs.writeFileSync(taskList, JSON.stringify(list, null, "\t"), "utf8");
     res.send({ list: list });
@@ -19,7 +30,6 @@ listEditRouter.post("/add", (req, res) => {
 });
 /* ruta:  http://127.0.0.1:3000/add
   {
-    "id": "4",
     "task": "task 4",
     "description": "Buy the gift",
     "isCompleted": true
@@ -28,7 +38,7 @@ listEditRouter.post("/add", (req, res) => {
 */
 
 //Ruta para borrar tareas
-listEditRouter.delete("/delete/:id", (req, res) => {
+listEditRouter.delete("/delete/:id", validId, (req, res) => {
   try {
     const idTask = req.params.id;
     const newList = list.filter((task) => task.id != idTask);
@@ -41,7 +51,7 @@ listEditRouter.delete("/delete/:id", (req, res) => {
 //ruta:   http://127.0.0.1:3000/delete/1
 
 //Ruta para editar tareas
-listEditRouter.put("/update/:id", (req, res) => {
+listEditRouter.put("/update/:id", [validId, validPut], (req, res) => {
   try {
     const idTask = req.params.id;
     const taskUpdate = req.body;
@@ -64,7 +74,7 @@ listEditRouter.put("/update/:id", (req, res) => {
     res.send({ error: error.message });
   }
 });
-/*ruta:   http://127.0.0.1:3000/update/2
+/*ruta:   http://127.0.0.1:3000/update/b92bda13-b147-4d52-85cf-31f385f8c2ef
  {
             "task": "task 2",
             "description": "go to the gym",
