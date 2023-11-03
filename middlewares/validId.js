@@ -1,4 +1,4 @@
-////Middleware para validar que el ID se encuentre dentro de la lista de tareas, en los métodos DELETE y PUT.
+////Middleware para validar que el ID se encuentre dentro de la lista de tareas, es utilizado en los métodos DELETE y PUT.
 
 const fs = require("fs");
 const path = require("path");
