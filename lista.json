@@ -1,20 +1,14 @@
 [
-  {
-    "id": "b92bda13-b147-4d52-85cf-31f385f8c2ef",
-    "task": "task 4",
-    "description": "Study for a test",
-    "isCompleted": false
-  },
-  {
-    "id": "5f6fd437-ff5b-4ad0-8671-eb85dd2ce342",
-    "task": "task 3",
-    "description": "Go to a restaurant",
-    "isCompleted": false
-  },
-  {
-    "id": "1a208056-b612-4c45-ba54-0a9056dfb5a0",
-    "task": "task 1",
-    "description": "Buy some food",
-    "isCompleted": true
-  }
+	{
+		"id": "b41be359-534a-4c07-9ed7-7b2730194fc6",
+		"task": "task 4",
+		"description": "Buy the gift",
+		"isCompleted": true
+	},
+	{
+		"id": "7fad2bc3-d12d-46e5-8ab4-d97d1a737f0f",
+		"task": "task 25",
+		"description": "Buy some fd",
+		"isCompleted": false
+	}
 ]

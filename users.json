@@ -1,0 +1,4 @@
+[
+  { "email": "admin@tasklist.com", "password": "admin", "rol": "admin" },
+  { "email": "user@tasklist.com", "password": "user", "rol": "user" }
+]

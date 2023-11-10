@@ -9,11 +9,11 @@ const list = JSON.parse(data);
 module.exports = function (req, res, next) {
   const idTask = req.params.id;
 
-  list.map((task) => {
-    if (task.id == idTask) {
-      next();
-    } else {
-      return res.status(400).send({ error: "ID doesn't exist." });
-    }
-  });
+  index = list.findIndex((task) => task.id == idTask);
+
+  if (index !== -1) {
+    next();
+  } else {
+    return res.status(400).send({ error: "ID doesn't exist." });
+  }
 };
